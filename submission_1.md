@@ -24,22 +24,23 @@ trial_1 <- cbind(dateTime, trial_1)
 ## Format dateTime Column
 trial_1$dateTime <- as.POSIXct(dateTime)
 
-###PLOT 1
+## Plot 1
 
-##histogram
+##Histogram
 hist(trial_1$Global_active_power, main="Global Active Power", xlab = "Global Active Power (kilowatts)", col="red")
 
-## Save file and close device
+## Save file
 #dev.copy(png,"trial_1.png", width=480, height=480)
 #dev.off()
 
 ## Plot 2
 plot(trial_1$Global_active_power~trial_1$dateTime, type="l", ylab="Global Active Power (kilowatts)", xlab="")
 
+## Save file
 #dev.copy(png,"graph2.png", width=480, height=480)
 #dev.off()
 
-## 3
+## Plot 3
 with(trial_1, {
           plot(Sub_metering_1~dateTime, type="l",
           ylab="Global Active Power (kilowatts)", xlab="")
@@ -49,11 +50,11 @@ with(trial_1, {
  legend("topright", col=c("black", "red", "blue"), lwd=c(1,1,1), 
         c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
-## Saving to file
+## Save file
 #dev.copy(png, file="plot3.png", height=480, width=480)
 #dev.off()
 
-## Create Plot 4
+## Plot 4
 par(mfrow=c(2,2), mar=c(4,4,2,1), oma=c(0,0,2,0))
 with(trial_1, {
      plot(Global_active_power~dateTime, type="l", 
@@ -70,6 +71,6 @@ with(trial_1, {
           ylab="Global Rective Power (kilowatts)",xlab="")
  })
 
-## Saving to file
+## Save file
 #dev.copy(png, file="plot4.png", height=480, width=480)
 #dev.off()
