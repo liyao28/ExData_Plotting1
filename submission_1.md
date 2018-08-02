@@ -11,7 +11,7 @@ trial_1 <- trial_1[complete.cases(trial_1),]
 
 ## Combine Date and Time
 dateTime <- paste(trial_1$Date, trial_1$Time)
- 
+
 ## Name the vector
 dateTime <- setNames(dateTime, "DateTime")
 
@@ -25,51 +25,59 @@ trial_1 <- cbind(dateTime, trial_1)
 trial_1$dateTime <- as.POSIXct(dateTime)
 
 ## Plot 1
-
 ##Histogram
+```
 hist(trial_1$Global_active_power, main="Global Active Power", xlab = "Global Active Power (kilowatts)", col="red")
-
+```
 ## Save file
 #dev.copy(png,"trial_1.png", width=480, height=480)
 #dev.off()
 
 ## Plot 2
+```
 plot(trial_1$Global_active_power~trial_1$dateTime, type="l", ylab="Global Active Power (kilowatts)", xlab="")
+```
 
 ## Save file
 #dev.copy(png,"graph2.png", width=480, height=480)
 #dev.off()
 
 ## Plot 3
+```
 with(trial_1, {
           plot(Sub_metering_1~dateTime, type="l",
           ylab="Global Active Power (kilowatts)", xlab="")
      lines(Sub_metering_2~dateTime,col='Red')
      lines(Sub_metering_3~dateTime,col='Blue')
- })
- legend("topright", col=c("black", "red", "blue"), lwd=c(1,1,1), 
-        c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+     })
+
+legend("topright", col=c("black", "red", "blue"), lwd=c(1,1,1),
+      c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+```
+
 
 ## Save file
 #dev.copy(png, file="plot3.png", height=480, width=480)
 #dev.off()
 
 ## Plot 4
+```
 par(mfrow=c(2,2), mar=c(4,4,2,1), oma=c(0,0,2,0))
 with(trial_1, {
-     plot(Global_active_power~dateTime, type="l", 
-          ylab="Global Active Power (kilowatts)", xlab="")
-     plot(Voltage~dateTime, type="l", 
-          ylab="Voltage (volt)", xlab="")
-     plot(Sub_metering_1~dateTime, type="l", 
-          ylab="Global Active Power (kilowatts)", xlab="")
+           plot(Global_active_power~dateTime, type="l",
+           ylab="Global Active Power (kilowatts)", xlab="")
+     plot(Voltage~dateTime, type="l",
+           ylab="Voltage (volt)", xlab="")
+     plot(Sub_metering_1~dateTime, type="l",
+           ylab="Global Active Power (kilowatts)", xlab="")
      lines(Sub_metering_2~dateTime,col='Red')
      lines(Sub_metering_3~dateTime,col='Blue')
      legend("topright", col=c("black", "red", "blue"), lty=1, lwd=2, bty="n",
-            legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
-     plot(Global_reactive_power~dateTime, type="l", 
+            legend=c("Sub_metering_1", sub_metering_2", "Sub_metering_3"))
+     plot(Global_reactive_power~dateTime, type="l",
           ylab="Global Rective Power (kilowatts)",xlab="")
  })
+```
 
 ## Save file
 #dev.copy(png, file="plot4.png", height=480, width=480)
